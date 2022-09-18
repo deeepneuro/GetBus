@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00BFA5"
+    android:backgroundTint="#1D5550"
+    tools:context=".First1">
+
+
+    <Button
+        android:elevation="6dp"
+        android:stateListAnimator="@null"
+        android:translationZ="6dp"
+        android:id="@+id/button_holy"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="140dp"
+        android:backgroundTint="#009688"
+        android:text="выходной или праздничный"
+        android:textAllCaps="false"
+        android:textSize="18dp"
+        app:cornerRadius="15dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:elevation="6dp"
+        android:stateListAnimator="@null"
+        android:translationZ="6dp"
+        android:id="@+id/button_worky"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#009688"
+        android:text="рабочий день"
+        android:textAllCaps="false"
+        android:textSize="18dp"
+        app:cornerRadius="15dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/button_holy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="60dp"
+        android:background="#127169"
+        android:paddingLeft="5dp"
+        android:paddingTop="20dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:text="будни или выходные? "
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_worky"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00BFA5"
+    android:backgroundTint="#1D5550"
+    android:visibility="visible"
+    tools:context=".First1_1">
+
+    <TextView
+        android:id="@+id/point5"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_corner2"
+        android:elevation="5dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:stateListAnimator="@null"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp"
+        android:translationZ="5dp"
+        app:layout_constraintStart_toEndOf="@+id/point4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/point4"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_corner2"
+        android:elevation="5dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:stateListAnimator="@null"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp"
+        android:translationZ="5dp"
+        app:layout_constraintStart_toEndOf="@+id/point3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/point3"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="120dp"
+        android:background="@drawable/rounded_corner2"
+        android:elevation="5dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:stateListAnimator="@null"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp"
+        android:translationZ="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/point2"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/rounded_corner2"
+        android:elevation="5dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:stateListAnimator="@null"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp"
+        android:translationZ="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/point3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_corner_404"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="404... автобус не найден"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/point1"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/rounded_corner2"
+        android:elevation="5dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:stateListAnimator="@null"
+        android:text="школьная"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp"
+        android:translationZ="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/point2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corner_blue_tv"
+        android:elevation="5dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:stateListAnimator="@null"
+        android:text="TextView7"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:translationZ="5dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="82dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="-25dp"
+        android:layout_marginBottom="5dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:srcCompat="@drawable/icobuslightblue" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="38dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="-3dp"
+        android:layout_marginBottom="73dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="00.00"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/numB"
+        android:layout_width="25dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="32dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="№2"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corner_blue_tv"
+        android:elevation="5dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:stateListAnimator="@null"
+
+        android:text="TextView6"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:translationZ="5dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corner_blue_tv"
+        android:elevation="5dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:stateListAnimator="@null"
+        android:text="TextView5"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:translationZ="5dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/point2" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="82dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="-25dp"
+        android:layout_marginBottom="5dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:srcCompat="@drawable/icobuslightblue" />
+
+    <ImageView
+        android:elevation="5dp"
+        android:stateListAnimator="@null"
+        android:translationZ="5dp"
+        android:id="@+id/imageView2"
+        android:layout_width="300dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/busline_450_15" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="38dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="-3dp"
+        android:layout_marginBottom="73dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="00.00"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/numA"
+        android:layout_width="25dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="32dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="2"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2" />
+
+    <Button
+        android:id="@+id/shedule"
+        android:layout_width="301dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="320dp"
+        android:backgroundTint="#009688"
+        android:elevation="10dp"
+        android:fontFamily="sans-serif"
+
+        android:stateListAnimator="@null"
+        android:text="расписание"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:translationZ="10dp"
+        app:cornerRadius="15dp"
+        app:iconPadding="8dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/point3" />
+    <!--  android:stateListAnimator="@null" делает кнопку на активити не доступной и невидимой на фрагменте-->
+    <!--  android:insetTop="0dp"
+      android:insetBottom="0dp" настройка внутренних отступов кнопки-->
+
+    <Button
+        android:id="@+id/taxiButton"
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="320dp"
+        android:backgroundTint="#009688"
+
+        android:elevation="10dp"
+        android:fontFamily="sans-serif"
+        android:stateListAnimator="@null"
+        android:text="вызов такси &quot;ЭГРА&quot;"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        android:translationZ="10dp"
+        android:visibility="invisible"
+        app:cornerRadius="15dp"
+        app:iconPadding="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/point3" />
+
+    <FrameLayout
+
+        android:id="@+id/PlaceHolder"
+        android:layout_width="339dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="-430dp"
+        android:elevation="10dp"
+        android:stateListAnimator="@null"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

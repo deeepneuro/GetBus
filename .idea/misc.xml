@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/drawable-v24/rounded_corner_light_green.xml" value="0.2735" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/drawable/rounded_corner.xml" value="0.159" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/drawable/rounded_corner2.xml" value="0.263" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/drawable/rounded_corner3.xml" value="0.1345" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/drawable/rounded_corner4.xml" value="0.2675" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/drawable/rounded_corner_404.xml" value="0.254" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/drawable/rounded_corner_blue_tv.xml" value="0.254" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/drawable/rounded_corner_light_blue.xml" value="0.166" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/drawable/rounded_corner_light_green_15.xml" value="0.182" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/drawable/shadow.xml" value="0.1" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/drawable/shape.xml" value="0.1" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout-land/activity_main.xml" value="0.2275132275132275" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/activity_first.xml" value="0.33" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/activity_first1.xml" value="0.33" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/activity_first11.xml" value="0.5067114093959731" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/activity_one_shot.xml" value="0.26875" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/fragment_blank.xml" value="0.13069908814589665" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/fragment_disclamer.xml" value="0.2056159420289855" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/fragment_item_list.xml" value="0.33" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/fragment_shedule.xml" value="0.23583180987202926" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/fragment_shedule_frag1h.xml" value="0.22771362586605082" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/fragment_shedule_frag2h.xml" value="0.23324275362318841" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/fragment_shedule_frag2w.xml" value="0.22" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/fragment_shedule_frag3h.xml" value="0.23324275362318841" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/layout/fragment_shedule_frag3w.xml" value="0.23324275362318841" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1795" />
+        <entry key="..\:/installed/GetBus/GetBus/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2525" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

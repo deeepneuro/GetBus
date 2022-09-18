@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "152252563843",
+    "project_id": "getbus-e61aa",
+    "storage_bucket": "getbus-e61aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:152252563843:android:7b6e6fdc86f2b1975f36b6",
+        "android_client_info": {
+          "package_name": "com.company.getbus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "152252563843-8b0qc7vqm6lvpuv70a2oc8tjlkth8u9b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJv12wQ7Gn5BLTbeR8lQY_WrYFiwLGS4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "152252563843-8b0qc7vqm6lvpuv70a2oc8tjlkth8u9b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
