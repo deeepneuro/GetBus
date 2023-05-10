@@ -2,29 +2,53 @@ package com.company.getbus
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.DisplayMetrics
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import com.company.getbus.databinding.ActivityMainBinding
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.ktx.Firebase
-
+import com.yandex.mobile.ads.banner.AdSize
+import com.yandex.mobile.ads.banner.BannerAdView
+import com.yandex.mobile.ads.common.AdRequest
 
 
 class MainActivity : AppCompatActivity() {
 
 
+
+    override fun onBackPressed() { //переопределяет стоковое действие кнопки BACK /// в данном случае осуществляет выход из приложения onDestroy
+        super.onBackPressed()
+
+        val handler = Handler() //задержка system.exit для полного отображения анимации
+        handler.postDelayed(Runnable {
+
+            System.exit(0)
+
+        }, 500)
+
+
+    }
+
+
     lateinit var binding: ActivityMainBinding
     private lateinit var sharedPrefs: SharedPreferences
     private lateinit var firebaseAnalytics: FirebaseAnalytics
+    lateinit var mAdView : AdView
 
-
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
 
         // Obtain the FirebaseAnalytics instance.
@@ -64,6 +88,17 @@ class MainActivity : AppCompatActivity() {
         //window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR  // меняет цвет шрифта в statusBar
         setContentView(binding.root)
 
+        ////////////////////////////////////////////////////////  yandex banner  ///////////////////////
+        MobileAds.initialize(this) {}
+
+        val banner = findViewById<BannerAdView>(R.id.banner)
+        banner.setAdUnitId("R-M-2089625-1")
+        banner.setAdSize(AdSize.stickySize(320))
+
+        val adRequest = AdRequest.Builder().build()
+
+        banner.loadAd(adRequest)
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -72,7 +107,16 @@ class MainActivity : AppCompatActivity() {
         val modify_3 = "3"
 
 
-
+        val density = resources.displayMetrics.run { density }
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val height = displayMetrics.heightPixels
+        val width = displayMetrics.widthPixels
+        val addDigit = 40.44117 * density
+        binding.imageView11?.animate()?.apply {
+            duration = 1000
+            translationX(width.toFloat() / 2 + addDigit.toFloat())
+        }
 
 
 
@@ -81,9 +125,23 @@ class MainActivity : AppCompatActivity() {
             firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                 param(FirebaseAnalytics.Param.ITEM_NAME, "button_1")
             }
-            val first_intent = Intent(this, First::class.java)
-            first_intent.putExtra("modify", modify_1)
-            startActivity(first_intent)
+            binding.button1.animate().apply {
+                duration = 150
+                scaleYBy(0.1f)
+
+            }.withEndAction(){
+                binding.button1.animate().apply {
+                    duration = 150
+                    scaleYBy(-0.1f)
+                }
+            }
+            Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                val first_intent = Intent(this, First::class.java)
+                first_intent.putExtra("modify", modify_1)
+                startActivity(first_intent)
+
+            }, 400)
 
 
 
@@ -94,9 +152,23 @@ class MainActivity : AppCompatActivity() {
             firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                 param(FirebaseAnalytics.Param.ITEM_NAME, "button_2")
             }
-            val first_intent = Intent(this, First::class.java)
-            first_intent.putExtra("modify", modify_2)
-            startActivity(first_intent)
+            binding.button2.animate().apply {
+                duration = 150
+                scaleYBy(0.1f)
+
+            }.withEndAction(){
+                binding.button2.animate().apply {
+                    duration = 150
+                    scaleYBy(-0.1f)
+                }
+            }
+            Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                val first_intent = Intent(this, First::class.java)
+                first_intent.putExtra("modify", modify_2)
+                startActivity(first_intent)
+            }, 400)
+
 
         }
 
@@ -104,9 +176,25 @@ class MainActivity : AppCompatActivity() {
             firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                 param(FirebaseAnalytics.Param.ITEM_NAME, "button_3")
             }
-            val first_intent = Intent(this, First::class.java)
-            first_intent.putExtra("modify", modify_3)
-            startActivity(first_intent)
+            binding.button3.animate().apply {
+                duration = 150
+                scaleYBy(0.1f)
+
+            }.withEndAction(){
+                binding.button3.animate().apply {
+                    duration = 150
+                    scaleYBy(-0.1f)
+                }
+            }
+            Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                val first_intent = Intent(this, First::class.java)
+                first_intent.putExtra("modify", modify_3)
+                startActivity(first_intent)
+            }, 400)
+
+
+
            
         }
 

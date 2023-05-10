@@ -4,10 +4,16 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.company.getbus.databinding.ActivityFirstBinding
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.yandex.mobile.ads.banner.AdSize
+import com.yandex.mobile.ads.banner.BannerAdView
+import com.yandex.mobile.ads.common.AdRequest
 
 
 class First: AppCompatActivity() {
@@ -27,6 +33,22 @@ class First: AppCompatActivity() {
 
         FirebaseAnalytics.Param.SCREEN_CLASS
 
+
+
+        ////////////////////////////////////////////////////////  yandex banner  ///////////////////////
+        MobileAds.initialize(this) {}
+
+        val banner = findViewById<BannerAdView>(R.id.banner2)
+        banner.setAdUnitId("R-M-2089625-2")
+        banner.setAdSize(AdSize.stickySize(320))
+
+        val adRequest = AdRequest.Builder().build()
+
+        banner.loadAd(adRequest)
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
         val direct_up = "up"
         val direct_down = "down"
         val modify = this.intent.getStringExtra("modify")
@@ -39,67 +61,50 @@ class First: AppCompatActivity() {
 
 
         binding.buttonCtt.setOnClickListener {
-            val first1_intent = Intent(this, First1::class.java)
-            first1_intent.putExtra("direct", direct_down)
-            first1_intent.putExtra("modify", modify)
+            binding.buttonCtt.animate().apply {
+                duration = 150
+                scaleXBy(0.1f)
 
-            startActivity(first1_intent)
+            }.withEndAction(){
+                binding.buttonCtt.animate().apply {
+                    duration = 150
+                    scaleXBy(-0.1f)
+                }
+            }
+            Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                val first1_intent = Intent(this, First1::class.java)
+                first1_intent.putExtra("direct", direct_down)
+                first1_intent.putExtra("modify", modify)
+
+                startActivity(first1_intent)
+            }, 400)
+
         }
 
         binding.buttonZhd.setOnClickListener {
-            val first1_intent = Intent(this, First1::class.java)
-            first1_intent.putExtra("direct", direct_up)
-            first1_intent.putExtra("modify", modify)
+            binding.buttonZhd.animate().apply {
+                duration = 150
+                scaleXBy(0.1f)
 
-            startActivity(first1_intent)
+            }.withEndAction(){
+                binding.buttonZhd.animate().apply {
+                    duration = 150
+                    scaleXBy(-0.1f)
+                }
+            }
+            Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                val first1_intent = Intent(this, First1::class.java)
+                first1_intent.putExtra("direct", direct_up)
+                first1_intent.putExtra("modify", modify)
+
+                startActivity(first1_intent)
+            }, 400)
+
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*val timingBus1_1: List<Double> = listOf(06.05, 06.25, 06.40, 06.45, 07.15, 07.25, 07.35, 07.45, 07.55, 08.10, 08.15,
-            08.25, 08.35, 08.45, 08.55, 09.15, 09.30, 09.40, 10.00, 10.20, 10.40, 11.00, 11.20,11.40, 12.05, 12.25, 12.40,
-            12.50, 13.00, 13.10, 13.25, 13.40, 13.50, 14.05, 14.20,12.55, 13.10, 13.20, 13.30, 13.45, 14.00, 14.10, 14.25,
-            14.40, 17.25, 17.40, 18.05,18.25, 18.50, 19.20, 19.50)
-
-        val timeNow = 10.10
-        val timeUp: MutableList<Double> = mutableListOf()
-        val timeDown: MutableList<Double> = mutableListOf()
-        for (n in timingBus1_1){
-            if (n < timeNow){
-                timeUp.add(n)
-            }else{timeDown.add(n)}
-        }
-
-
-        button_ctt_zhd.setOnClickListener {
-
-            val first1_intent = Intent (this, First1::class.java)
-            first1_intent.putExtra("timeUp", timeUp.last().toString())
-            first1_intent.putExtra("timeDown", timeDown.first().toString())
-            startActivity(first1_intent)
-
-
-
-
-        }*/
     }
 }
 

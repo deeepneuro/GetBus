@@ -8,6 +8,8 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
@@ -23,6 +25,10 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.ktx.Firebase
+import com.yandex.mobile.ads.banner.AdSize
+import com.yandex.mobile.ads.banner.BannerAdView
+import com.yandex.mobile.ads.common.AdRequest
+import com.yandex.mobile.ads.common.MobileAds
 import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.LocalTime
@@ -63,6 +69,20 @@ class First1_1: AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
+        ////////////////////////////////////////////////////////  yandex banner  ///////////////////////
+        MobileAds.initialize(this) {}
+
+        val banner = findViewById<BannerAdView>(R.id.banner4)
+        banner.setAdUnitId("R-M-2089625-4")
+        banner.setAdSize(AdSize.stickySize(320))
+
+        val adRequest = AdRequest.Builder().build()
+
+        banner.loadAd(adRequest)
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
         val destiny = resources.displayMetrics.run { density }
         //val destinydpi = resources.displayMetrics.run { densityDpi }// dpi дисплея
         //val widthView2 = binding.imageView2.getDrawable().getIntrinsicWidth()
@@ -96,10 +116,6 @@ class First1_1: AppCompatActivity() {
 
 
 
-
-        /*val mttv7 = binding.shedule.marginTop  // в этой переменной размер marginTop указанного объекта
-        binding.marginView.text = mttv7.toString()
-        binding.dpi.text = destiny.toString()*/
 
 
 
@@ -153,12 +169,26 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_2_d_w")
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag2w.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+                        supportFragmentManager
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag2w.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+
+                    }, 400)
+
 
 
                 }
@@ -190,13 +220,27 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_2_u_w")
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        //.setCustomAnimations(R.anim.slide_in, R.anim.slide_out) анимация только при открытии фрагмента
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag2w.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            //.setCustomAnimations(R.anim.slide_in, R.anim.slide_out) анимация только при открытии фрагмента
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag2w.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+                    }, 400)
+
                 }
                 for (i in one_up_work) {
                     if (i > timeNowDouble && timeNowDouble >= one_up_work[2]) {               //находим ближайшие временные метки от настоящего времени
@@ -222,12 +266,26 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_2_d_h")
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag2h.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag2h.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+                    }, 400)
+
                 }
                 for (i in one_down_holy) {
                     if (i > timeNowDouble && timeNowDouble >= one_down_holy[2]) {               //находим ближайшие временные метки от настоящего времени
@@ -253,12 +311,26 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_2_u_h")
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag2h.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag2h.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+                    }, 300)
+
                 }
                 for (i in one_up_holy) {
                     if (i > timeNowDouble && timeNowDouble >= one_up_holy[2]) {               //находим ближайшие временные метки от настоящего времени
@@ -282,13 +354,14 @@ class First1_1: AppCompatActivity() {
 
 
 
-            //парсим значения времени
+            //парсинг значений времени
 
             val revers_time_beforeF = String.format(Locale.CHINA, "%.2f", revers_time_before)
             val revers_timeF = String.format(Locale.CHINA, "%.2f", revers_time)
             val pastF = String.format(Locale.CHINA, "%.2f", pastX)//добавляет хвостовые нули после точки
             val beforeF = String.format(Locale.CHINA, "%.2f", beforeX) //добавляет хвостовые нули после точки
             val beforeXXF = String.format(Locale.CHINA, "%.2f", beforeXX)
+
             val time_now_F_list: List<String> = timeNowFormated.split(".") //разбиваем значение настоящего времени на часы и минуты и кладем их в список
             val aTNF = time_now_F_list[0] //кладем в переменную значение "часы"
             val bTNF = time_now_F_list[1] //кладем в переменную значение "минуты"
@@ -307,6 +380,8 @@ class First1_1: AppCompatActivity() {
             val revers_time_before_list: List<String> = revers_time_beforeF.split(".")
             val aReversRaceBefore = revers_time_before_list[0]
             val bReversRaceBefore = revers_time_before_list[1]
+
+
 
 
 
@@ -639,12 +714,26 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_1_d_w")
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+                    }, 400)
+
                 }
 
 
@@ -674,12 +763,25 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_1_u_w") //отправляет в аналитику строковое заначение
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+                    }, 400)
                 }
 
                 for (i in one_up_work) {
@@ -706,12 +808,25 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_1_d_h")
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag1h.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag1h.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+                    }, 400)
                 }
                 for (i in one_down_holy) {
                     if (i > timeNowDouble && timeNowDouble >= one_down_holy[2]) {               //находим ближайшие временные метки от настоящего времени
@@ -737,12 +852,25 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_1_u_h")
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag1h.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag1h.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+                    }, 400)
                 }
                 for (i in one_up_holy) {
                     if (i > timeNowDouble && timeNowDouble >= one_up_holy[2]) {               //находим ближайшие временные метки от настоящего времени
@@ -820,7 +948,7 @@ class First1_1: AppCompatActivity() {
             val differenceBeforeNow = timeBeforeNow.toMinutes().toInt()//в минутах между "до" и "сейчас"
             val differenceBeforeXXNow = timeDoubleBeforeNow.toMinutes().toInt()//в минутах между дважды "до" и "сейчас"
             val differenceNowPast = timeNowPast.toMinutes().toInt()// в минутах между "сейчас" и "после"
-
+            
 
 
 
@@ -1090,11 +1218,16 @@ class First1_1: AppCompatActivity() {
 
 
 
-            val one_down_work:MutableList<Double> = mutableListOf(5.55, 6.15,      6.35, 7.20, 8.20, 10.00, 11.10, 12.25, 13.15, 15.10, 15.55, 16.50, 17.25, 17.50, 18.45, 19.10, 20.05,   20.25, 23.59, 0.00, 6.34)//после пробелов значение мнимое
-            val one_up_work:MutableList<Double> = mutableListOf(6.15, 6.35,      06.55, 7.40, 8.40, 10.20, 11.30,  12.45,  13.35, 15.30, 16.15, 17.10, 17.45, 18.15, 19.05, 19.30, 20.25,   20.45, 23.59, 0.00, 6.54)//последнее значение мнимое
+
+            val one_down_work:MutableList<Double> = mutableListOf(5.40, 6.00,      6.20, 6.35, 6.40, 6.55, 7.05, 7.20, 7.30, 7.40, 7.55, 8.10, 8.20, 8.35, 8.50, 9.00, 9.20, 9.40, 10.00, 10.10, 10.20, 10.30, 10.50, 11.00, 11.10, 11.25, 11.35, 11.45, 12.05, 12.15, 12.25, 12.35, 12.55, 13.15, 13.40, 13.50, 14.10, 14.40, 14.50, 15.00, 15.10, 15.20, 15.35, 15.45, 15.55, 16.05, 16.15, 16.25, 16.50, 17.05, 17.20, 17.25, 17.35, 17.50, 18.05, 18.20, 18.45, 18.55, 19.10, 19.55, 20.05
+                ,   20.25, 23.59, 0.00, 6.34)//после пробелов значение мнимое
+            val one_up_work:MutableList<Double> = mutableListOf(6.00, 6.20,      6.40, 6.55, 7.05, 7.15, 7.25, 7.40, 7.50, 8.00, 8.20, 8.35, 8.40, 8.55, 9.10, 9.20, 9.40, 10.00, 10.20, 10.30, 10.40, 10.50, 11.10, 11.20, 11.30, 11.45, 11.55, 12.10, 12.25, 12.35, 12.45, 12.55, 13.15, 13.35, 14.00, 14.10, 14.30, 15.00, 15.10, 15.25, 15.30, 15.40, 15.55, 16.05, 16.15, 16.25, 16.35, 16.55, 17.10, 17.25, 17.40, 17.45, 17.55, 18.15, 18.25, 18.40, 19.05, 19.20, 19.30, 20.15, 20.25,   20.45, 23.59, 0.00, 6.54)//последнее значение мнимое
+            //val one_down_work:MutableList<Double> = mutableListOf(5.55, 6.15,      6.35, 7.20, 8.20, 10.00, 11.10, 12.25, 13.15, 15.10, 15.55, 16.50, 17.25, 17.50, 18.45, 19.10, 20.05,   20.25, 23.59, 0.00, 6.34)//после пробелов значение мнимое
+            //val one_up_work:MutableList<Double> = mutableListOf(6.15, 6.35,      06.55, 7.40, 8.40, 10.20, 11.30,  12.45,  13.35, 15.30, 16.15, 17.10, 17.45, 18.15, 19.05, 19.30, 20.25,   20.45, 23.59, 0.00, 6.54)//последнее значение мнимое
             val one_down_holy:MutableList<Double> = mutableListOf(5.50, 6.10,     6.30, 7.10, 7.30, 7.50, 8.10, 8.40, 9.20, 9.45, 10.00, 10.20, 10.40, 11.00, 11.10, 11.40, 12.25, 12.45, 13.25, 14.05, 14.45, 15.25, 15.45, 16.10, 16.30, 16.50, 17.25,18.05, 18.45,  20.05,   20.25, 23.59, 0.00, 6.29)//последнее значение мнимое
             val one_up_holy:MutableList<Double> = mutableListOf(6.10, 6.30,      6.50, 7.30, 7.50, 8.10, 8.30, 9.00, 9.40, 10.05, 10.20, 10.40, 11.00, 11.20, 11.30, 12.00, 12.45, 13.05, 13.45, 14.25, 15.05, 15.45, 16.10, 16.30, 16.50, 17.10, 17.45, 18.25, 19.05, 20.25,   20.45, 23.59, 0.00, 6.49)//последнее значение мнимое
-            val virtual_revers:MutableList<Double> = mutableListOf(6.35, 6.55,      7.15, 8.00, 9.00, 10.40, 11.50, 13.05, 13.55, 15.50, 16.35, 17.30, 18.05, 18.35, 19.25, 19.50, 20.45,  3.0, 3.0, 3.0, 3.0)
+            //val virtual_revers:MutableList<Double> = mutableListOf(6.35, 6.55,      7.15, 8.00, 9.00, 10.40, 11.50, 13.05, 13.55, 15.50, 16.35, 17.30, 18.05, 18.35, 19.25, 19.50, 20.45,  3.0, 3.0, 3.0, 3.0)
+            val virtual_revers:MutableList<Double> = mutableListOf(6.20, 6.40,      7.00, 7.15, 7.25, 7.35, 7.45, 8.00, 8.10, 8.20, 8.40, 8.55, 9.00, 9.15, 9.30, 9.50, 10.00, 10.20, 10.40, 10.50, 11.00, 11.10, 11.30, 11.40, 11.50, 12.05, 12.15, 12.30, 12.45, 12.55, 13.05, 13.15, 13.35, 13.55, 14.20, 14.30, 14.50, 15.20, 15.30, 15.45, 15.50, 16.00, 16.15, 16.25, 16.35, 16.45, 16.55, 17.15, 17.30, 17.45, 18.00, 18.05, 18.15, 18.35, 18.45, 19.00, 19.25, 19.40, 19.50, 20.35, 20.45,  3.0, 3.0, 3.0, 3.0)
             val virtual_revers_2:MutableList<Double> = mutableListOf(6.30, 6.50,     7.10, 7.50, 8.10, 8.30, 8.50, 9.20, 10.00, 10.25, 10.40, 11.00, 11.20, 11.40, 11.50, 12.20, 13.05, 13.25, 14.05, 14.45, 15.25, 16.05, 16.30, 16.50, 17.10, 17.30, 18.05, 18.45, 19.25, 20.45,  3.0, 3.0, 3.0, 3.0)//виртуальный список для выходных
             var beforeXX = 0.0
             var beforeX = 0.0
@@ -1118,12 +1251,25 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_3_d_w") //отправляет в аналитику строковое значение
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag3w.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag3w.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+                    }, 400)
                 }
                 for (i in one_down_work) {
                     if (i > timeNowDouble && timeNowDouble >= one_down_work[2]) {               //находим ближайшие временные метки от настоящего времени
@@ -1150,12 +1296,25 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_3_u_w")
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag3w.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag3w.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+                    }, 400)
                 }
                 for (i in one_up_work) {
                     if (i > timeNowDouble && timeNowDouble >= one_up_work[2]) {               //находим ближайшие временные метки от настоящего времени
@@ -1181,12 +1340,25 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_3_d_h")
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag3h.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag3h.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+                    }, 400)
                 }
                 for (i in one_down_holy) {
                     if (i > timeNowDouble && timeNowDouble >= one_down_holy[2]) {               //находим ближайшие временные метки от настоящего времени
@@ -1213,12 +1385,25 @@ class First1_1: AppCompatActivity() {
                     firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM) {
                         param(FirebaseAnalytics.Param.ITEM_NAME, "shedule_3_u_h")
                     }
-                    supportFragmentManager
-                        .beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
-                        .replace(R.id.PlaceHolder, SheduleFrag3h.newInstance())
-                        .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
-                        .commit()
+                    binding.shedule.animate().apply {
+                        duration = 150
+                        scaleXBy(0.1f)
+
+                    }.withEndAction(){
+                        binding.shedule.animate().apply {
+                            duration = 150
+                            scaleXBy(-0.1f)
+                        }
+                    }
+                    Handler(Looper.getMainLooper()).postDelayed({ //запуск отложенной анимации// новый Handler /////////////////////////////////////////////////////////////////////////
+
+                        supportFragmentManager
+                            .beginTransaction()
+                            .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.fade_in, R.anim.fade_out) // анимация фрагмента при открытии и закрытии
+                            .replace(R.id.PlaceHolder, SheduleFrag3h.newInstance())
+                            .addToBackStack(null) //возвращает в то же активити, в котором находится фрагмент
+                            .commit()
+                    }, 400)
                 }
                 for (i in one_up_holy) {
                     if (i > timeNowDouble && timeNowDouble >= one_up_holy[2]) {               //находим ближайшие временные метки от настоящего времени
